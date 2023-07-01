@@ -32,7 +32,7 @@ class WeatherViewModel: ObservableObject {
    
     @Published var locationWeather = WeatherData(
         response: WeatherResponse(name: "Alameda", main: Main(temp: 287.54, feels_like: 287.23, temp_min: 284.55, temp_max: 295.22), coord: Coord(lat: -122.5, lon: 22.6))
-
+    )
   
     @MainActor func getWeather(_ city: String) {
         Task {
@@ -49,8 +49,9 @@ class WeatherViewModel: ObservableObject {
             }
         }
     } // end mainactor func
-    
-    
-} // end weathervm closure
+}
+
+
+
 
 

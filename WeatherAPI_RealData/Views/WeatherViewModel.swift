@@ -17,7 +17,7 @@ enum NetworkError: Error {
     }
 }
 
-
+// struct that holds that location's weather
 struct WeatherData: Identifiable {
     let id = UUID()
     var response: WeatherResponse
@@ -30,14 +30,16 @@ class WeatherViewModel: ObservableObject {
     
     let service = WeatherService()
    
-    @Published var locationWeather = WeatherData(response: WeatherResponse(name: "Alameda", main: Main(temp: 287.54, feels_like: 287.23, temp_min: 284.55, temp_max: 295.22), coord: Coord(lat: -122.5, lon: 22.6)))
-    
-   
+    @Published var locationWeather = WeatherData(
+        response: WeatherResponse(name: "Alameda", main: Main(temp: 287.54, feels_like: 287.23, temp_min: 284.55, temp_max: 295.22), coord: Coord(lat: -122.5, lon: 22.6))
+
+  
     @MainActor func getWeather(_ city: String) {
         Task {
             do {
                 let loc: [Location] = try await service.fetchGeoLocation(_search: city)
-               self.locationWeather = WeatherData(response: try await service.fetchWeather(lat: loc[0].lat, lon: loc[0].lon))
+              
+                self.locationWeather = WeatherData(response: try await service.fetchWeather(lat: loc[0].lat, lon: loc[0].lon))
             } catch {
                 if let error = error as? NetworkError {
                    print(error.description)
@@ -50,7 +52,5 @@ class WeatherViewModel: ObservableObject {
     
     
 } // end weathervm closure
-
-
 
 

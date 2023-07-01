@@ -9,3 +9,6 @@ import Foundation
 struct AppInformation {
     static let apiKey = "d9b989c37bd0640006ce9d7350173842"
 }
+enum NetworkState {
+    case initial, loading, loaded, error, noResults
+}

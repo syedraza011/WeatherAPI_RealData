@@ -13,18 +13,19 @@ struct ContentView: View {
     @StateObject var viewModel = WeatherViewModel()
 
     var body: some View {
+       
         HStack {
-            ForEach(viewModel.weather) { weatherResponse in
-                HStack {
-                    Text("Lat: \(weatherResponse.coord.lat)")
-                        .frame(width: 60, height: 30)
-                        .font(.headline)
-                    Text("Lon: \(weatherResponse.coord.lon)")
-                        .frame(width: 60, height: 30)
-                        .font(.headline)
-                }
+            Text("Hello WORLD")
+//            ForEach(viewModel.weather) { weatherResponse in
+//
+//                    Text("Lat: \(weatherResponse.coord.lat)")
+//                        .frame(width: 60, height: 30)
+//                        .font(.headline)
+//                    Text("Lon: \(weatherResponse.coord.lon)")
+//                        .frame(width: 60, height: 30)
+//                        .font(.headline)
+//                }
             }
-        }
     }
 }
 

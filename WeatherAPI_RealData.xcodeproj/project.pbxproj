@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E99775CB2A4A029500A5FADB /* WeatherCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99775CA2A4A029500A5FADB /* WeatherCell.swift */; };
 		E99FE1062A489FC200F42A43 /* WeatherAPI_RealDataApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99FE1052A489FC200F42A43 /* WeatherAPI_RealDataApp.swift */; };
 		E99FE1082A489FC200F42A43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99FE1072A489FC200F42A43 /* ContentView.swift */; };
 		E99FE10A2A489FC600F42A43 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E99FE1092A489FC600F42A43 /* Assets.xcassets */; };
@@ -20,7 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E99775CA2A4A029500A5FADB /* WeatherCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCell.swift; sourceTree = "<group>"; };
 		E99FE1022A489FC200F42A43 /* WeatherAPI_RealData.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherAPI_RealData.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E99FE1052A489FC200F42A43 /* WeatherAPI_RealDataApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPI_RealDataApp.swift; sourceTree = "<group>"; };
 		E99FE1072A489FC200F42A43 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 			children = (
 				E99FE1072A489FC200F42A43 /* ContentView.swift */,
 				E99FE1192A48A78800F42A43 /* WeatherViewModel.swift */,
-				E99775CA2A4A029500A5FADB /* WeatherCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -175,7 +172,6 @@
 				E99FE1082A489FC200F42A43 /* ContentView.swift in Sources */,
 				E99FE1152A48A09700F42A43 /* WeatherService.swift in Sources */,
 				E99FE11C2A48B35000F42A43 /* .gitignore.swift in Sources */,
-				E99775CB2A4A029500A5FADB /* WeatherCell.swift in Sources */,
 				E99FE1062A489FC200F42A43 /* WeatherAPI_RealDataApp.swift in Sources */,
 				E99FE1172A48A22300F42A43 /* WeatherResponse.swift in Sources */,
 				E99FE11E2A48B3C000F42A43 /* APPInfo.swift in Sources */,

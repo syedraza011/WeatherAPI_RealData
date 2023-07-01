@@ -9,71 +9,74 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var searchText = ""
-    @ObservedObject private var weatherViewModel = WeatherViewModel()
+    
+    @State var searchText = "" // for the search bar
+    @StateObject var ViewModel = WeatherViewModel() // for the weather view
     
     var body: some View {
+        
         NavigationView {
-            ZStack {
-                LinearGradient(gradient: Gradient(colors: [.orange, .yellow, .cyan, .cyan]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
+            //-------
+            VStack {
+                TextField("Enter city name", text: $searchText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
+                    .disableAutocorrection(true)
                 
-                VStack {
-                    HStack {
-                        TextField("Search city", text: $searchText)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .padding(.horizontal)
-                            .disableAutocorrection(true)
-                        
-                        Button(action: {
-                            weatherViewModel.useAsyncAwait()
-                            searchText = ""
-                        }) {
-                            Image(systemName: "magnifyingglass")
-                                .imageScale(.large)
-                                .padding(.trailing)
-                        }
-                    }
+                Button(action: {
+                    ViewModel.getWeather(searchText)
+                    searchText = ""
+                }) {
+                    Text("Search")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                }
+                
+                //-----
+                ZStack {
+                    LinearGradient(gradient: Gradient(colors: [.orange, .yellow, .blue]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        .ignoresSafeArea() // background of the app
+                    
+                    
                     
                     ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .foregroundColor(.white)
-                            .opacity(0.7)
-                            .frame(maxWidth: 360, maxHeight: 140)
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.black, lineWidth: 2)
-                            )
+                        LinearGradient(gradient: Gradient(colors: [.cyan, .cyan, .yellow, .orange]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                            .opacity(0.5)
+                            .border(.black, width: 0.5)
+                            .cornerRadius(25)
+                            .frame(maxWidth: 360, maxHeight: 140, alignment: .topLeading)
                         
+                        // for the weather :)
                         VStack {
-                            HStack {
-                                Text("City: \(weatherViewModel.weather.name)")
+                            
+                            HStack { // city, temp
+                                Text("City: \(ViewModel.locationWeather.response.name)")
                                     .font(.system(size: 28))
-                                
-                                Text("Temp: \(convertKelvinToFahrenheit(weatherViewModel.weather.main.temp))°")
+                                Text("Temp: \(((ViewModel.locationWeather.response.main.temp-273.15) * (9/5) + 32))°")
                                     .font(.system(size: 22))
                             }
                             
-                            HStack {
-                                Text("High: \(convertKelvinToFahrenheit(weatherViewModel.weather.main.temp_max))°")
+                            HStack { // highs, lows
+                                Text("High: \(((ViewModel.locationWeather.response.main.temp_max-273.15) * (9/5) + 32))°")
                                     .font(.system(size: 20))
-                                
-                                Text("Low: \(convertKelvinToFahrenheit(weatherViewModel.weather.main.temp_min))°")
+                                Text("Low: \(((ViewModel.locationWeather.response.main.temp_min-273.15) * (9/5) + 32))°")
                                     .font(.system(size: 20))
                             }
+                            
                         }
-                        .frame(maxWidth: 340, maxHeight: 120)
-                        .padding()
-                    }
-                    .frame(maxWidth: 360)
-                }
-            }
-            .navigationTitle("Weather")
-        }
-        .onAppear {
-            Task {
-                await weatherViewModel.useAsyncAwait()
+                        .frame(maxWidth: 340, maxHeight: 120, alignment: .topLeading)
+                        .background( Color.blue )
+                        
+                    } // zstack 21 closure
+                    .frame(maxWidth: 360, maxHeight: .infinity, alignment: .topLeading)
+                    
+                } // zstack 17 closure
+                .navigationTitle(Text("Weather"))
+            } // nav 16 closure
+            .onAppear {
+                ViewModel.getWeather(searchText)
             }
         }
     }

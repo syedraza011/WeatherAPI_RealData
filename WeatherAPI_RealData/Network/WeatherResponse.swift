@@ -6,22 +6,21 @@
 //
 
 import Foundation
-struct WeatherResponse: Decodable {
-    let name: String
-    let coord: Coord
-    let main: Main
-    let weather: [Weather]
-    let timezone: Int
-}
 
-struct Coord: Decodable {
+struct Location: Codable {
     let lat: Double
     let lon: Double
-    
 }
 
-struct Weather: Decodable {
-    let icon: String
+struct WeatherResponse: Codable {
+    let name: String
+    let main: Main
+    let coord: Coord
+}
+
+struct Coord: Codable {
+    let lat: Double
+    let lon: Double
 }
 
 struct Main: Codable {
@@ -29,12 +28,4 @@ struct Main: Codable {
     let feels_like: Double
     let temp_min: Double
     let temp_max: Double
-}
-
-struct Location: Codable {
-    let name: String
-    let country: String
-    let state: String
-    let lat: Double
-    let lon: Double
 }

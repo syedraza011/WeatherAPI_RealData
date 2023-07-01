@@ -7,27 +7,84 @@
 
 
 import SwiftUI
-import Combine
 
 struct ContentView: View {
-    @StateObject var viewModel = WeatherViewModel()
-
+    @State private var searchText = ""
+    @ObservedObject private var weatherViewModel = WeatherViewModel()
+    
     var body: some View {
-       
-        HStack {
-            Text("Hello WORLD")
-//            ForEach(viewModel.weather) { weatherResponse in
-//
-//                    Text("Lat: \(weatherResponse.coord.lat)")
-//                        .frame(width: 60, height: 30)
-//                        .font(.headline)
-//                    Text("Lon: \(weatherResponse.coord.lon)")
-//                        .frame(width: 60, height: 30)
-//                        .font(.headline)
-//                }
+        NavigationView {
+            ZStack {
+                LinearGradient(gradient: Gradient(colors: [.orange, .yellow, .cyan, .cyan]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+                
+                VStack {
+                    HStack {
+                        TextField("Search city", text: $searchText)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .padding(.horizontal)
+                            .disableAutocorrection(true)
+                        
+                        Button(action: {
+                            weatherViewModel.useAsyncAwait()
+                            searchText = ""
+                        }) {
+                            Image(systemName: "magnifyingglass")
+                                .imageScale(.large)
+                                .padding(.trailing)
+                        }
+                    }
+                    
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 5)
+                            .foregroundColor(.white)
+                            .opacity(0.7)
+                            .frame(maxWidth: 360, maxHeight: 140)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 5)
+                                    .stroke(Color.black, lineWidth: 2)
+                            )
+                        
+                        VStack {
+                            HStack {
+                                Text("City: \(weatherViewModel.weather.name)")
+                                    .font(.system(size: 28))
+                                
+                                Text("Temp: \(convertKelvinToFahrenheit(weatherViewModel.weather.main.temp))°")
+                                    .font(.system(size: 22))
+                            }
+                            
+                            HStack {
+                                Text("High: \(convertKelvinToFahrenheit(weatherViewModel.weather.main.temp_max))°")
+                                    .font(.system(size: 20))
+                                
+                                Text("Low: \(convertKelvinToFahrenheit(weatherViewModel.weather.main.temp_min))°")
+                                    .font(.system(size: 20))
+                            }
+                        }
+                        .frame(maxWidth: 340, maxHeight: 120)
+                        .padding()
+                    }
+                    .frame(maxWidth: 360)
+                }
             }
+            .navigationTitle("Weather")
+        }
+        .onAppear {
+            Task {
+                await weatherViewModel.useAsyncAwait()
+            }
+        }
+    }
+    
+    private func convertKelvinToFahrenheit(_ kelvin: Double) -> Int {
+        Int((kelvin - 273.15) * 9/5 + 32)
     }
 }
+
+
+
 
 
 

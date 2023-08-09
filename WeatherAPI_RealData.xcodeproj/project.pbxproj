@@ -14,7 +14,6 @@
 		E99FE1152A48A09700F42A43 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99FE1142A48A09700F42A43 /* WeatherService.swift */; };
 		E99FE1172A48A22300F42A43 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99FE1162A48A22300F42A43 /* WeatherResponse.swift */; };
 		E99FE11A2A48A78900F42A43 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99FE1192A48A78800F42A43 /* WeatherViewModel.swift */; };
-		E99FE11C2A48B35000F42A43 /* .gitignore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99FE11B2A48B35000F42A43 /* .gitignore.swift */; };
 		E99FE11E2A48B3C000F42A43 /* APPInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99FE11D2A48B3C000F42A43 /* APPInfo.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +26,6 @@
 		E99FE1142A48A09700F42A43 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
 		E99FE1162A48A22300F42A43 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		E99FE1192A48A78800F42A43 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
-		E99FE11B2A48B35000F42A43 /* .gitignore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = .gitignore.swift; sourceTree = "<group>"; };
 		E99FE11D2A48B3C000F42A43 /* APPInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APPInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +64,6 @@
 				E99FE1052A489FC200F42A43 /* WeatherAPI_RealDataApp.swift */,
 				E99FE1092A489FC600F42A43 /* Assets.xcassets */,
 				E99FE10B2A489FC600F42A43 /* Preview Content */,
-				E99FE11B2A48B35000F42A43 /* .gitignore.swift */,
 			);
 			path = WeatherAPI_RealData;
 			sourceTree = "<group>";
@@ -171,7 +168,6 @@
 				E99FE11A2A48A78900F42A43 /* WeatherViewModel.swift in Sources */,
 				E99FE1082A489FC200F42A43 /* ContentView.swift in Sources */,
 				E99FE1152A48A09700F42A43 /* WeatherService.swift in Sources */,
-				E99FE11C2A48B35000F42A43 /* .gitignore.swift in Sources */,
 				E99FE1062A489FC200F42A43 /* WeatherAPI_RealDataApp.swift in Sources */,
 				E99FE1172A48A22300F42A43 /* WeatherResponse.swift in Sources */,
 				E99FE11E2A48B3C000F42A43 /* APPInfo.swift in Sources */,
